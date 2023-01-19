@@ -36,6 +36,35 @@ _samples = {
   ]
 }
 
+samples = [
+  'ray-marching',
+]
+
+foreach sample : samples
+  frag_glsl = custom_target(
+    '@0@.fragment.h'.format(sample),
+    command: [textify, '@0@_fragment_shader_source'.format(sample.underscorify()), '@INPUT@', '@OUTPUT@'],
+    input: '@0@.frag'.format(sample),
+    output: '@0@.fragment.h'.format(sample),
+  )
+
+  vert_glsl = custom_target(
+    '@0@.vertex.h'.format(sample),
+    command: [textify, '@0@_vertex_shader_source'.format(sample.underscorify()), '@INPUT@', '@OUTPUT@'],
+    input: '@0@.vert'.format(sample),
+    output: '@0@.vertex.h'.format(sample),
+  )
+
+  _samples += {
+    sample: [
+      '@0@.cc'.format(sample),
+      frag_glsl,
+      vert_glsl,
+    ]
+  }  
+endforeach
+
+
 _samples_dep = [
   jpeg_dep,
 ]
