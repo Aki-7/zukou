@@ -19,6 +19,27 @@ texture_frag_glsl = custom_target(
   output: 'texture.fragment.h',
 )
 
+sphere_geometry_vert_glsl = custom_target(
+  'sphere-geometry.vertex.h',
+  command: [textify, 'sphere_geometry_vertex_shader_source', '@INPUT@', '@OUTPUT@'],
+  input: 'sphere-geometry.vert',
+  output: 'sphere-geometry.vert.h',
+)
+
+sphere_geometry_geom_glsl = custom_target(
+  'sphere-geometry.geometry.h',
+  command: [textify, 'sphere_geometry_geometry_shader_source', '@INPUT@', '@OUTPUT@'],
+  input: 'sphere-geometry.geom',
+  output: 'sphere-geometry.geom.h',
+)
+
+sphere_geometry_frag_glsl = custom_target(
+  'sphere-geometry.fragment.h',
+  command: [textify, 'sphere_geometry_fragment_shader_source', '@INPUT@', '@OUTPUT@'],
+  input: 'sphere-geometry.frag',
+  output: 'sphere-geometry.frag.h',
+)
+
 _samples = {
   'box': [
     'box.cc',
@@ -33,6 +54,14 @@ _samples = {
     color_frag_glsl,
     texture_frag_glsl,
     default_vert_glsl,
+  ],
+  'geometry': [
+    'geometry-shader.cc',
+    'sphere-geometry.cc',
+    'jpeg-texture.cc',
+    sphere_geometry_vert_glsl,
+    sphere_geometry_geom_glsl,
+    sphere_geometry_frag_glsl,
   ]
 }
 

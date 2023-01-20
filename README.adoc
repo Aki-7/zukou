@@ -30,5 +30,7 @@ $ ninja -C build install
 ----
 $ ./build/sample/zukou-box
 $ ./build/sample/zukou-celestial-body ./assets/moon.jpg
+$ ./build/sample/zukou-geometry ./assets/moon.jpg
+$ ./build/sample/zukou-ray-marching
 ----
 
