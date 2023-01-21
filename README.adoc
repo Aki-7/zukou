@@ -32,5 +32,6 @@ $ ./build/sample/zukou-box
 $ ./build/sample/zukou-celestial-body ./assets/moon.jpg
 $ ./build/sample/zukou-geometry ./assets/moon.jpg
 $ ./build/sample/zukou-ray-marching
+$ ./build/sample/zukou-bump ./assets/lroc_color_poles_2k.tif assets/ldem_4.tif
 ----
 

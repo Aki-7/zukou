@@ -40,6 +40,20 @@ sphere_geometry_frag_glsl = custom_target(
   output: 'sphere-geometry.frag.h',
 )
 
+sphere_bump_vert_glsl = custom_target(
+  'sphere-bump.vertex.h',
+  command: [textify, 'sphere_bump_vertex_shader_source', '@INPUT@', '@OUTPUT@'],
+  input: 'sphere-bump.vert',
+  output: 'sphere-bump.vert.h',
+)
+
+sphere_bump_frag_glsl = custom_target(
+  'sphere-bump.fragment.h',
+  command: [textify, 'sphere_bump_fragment_shader_source', '@INPUT@', '@OUTPUT@'],
+  input: 'sphere-bump.frag',
+  output: 'sphere-bump.frag.h',
+)
+
 _samples = {
   'box': [
     'box.cc',
@@ -62,6 +76,14 @@ _samples = {
     sphere_geometry_vert_glsl,
     sphere_geometry_geom_glsl,
     sphere_geometry_frag_glsl,
+  ],
+  'bump': [
+    'bump-map.cc',
+    'sphere-bump.cc',
+    'tiff-texture.cc',
+    'jpeg-texture.cc',
+    sphere_bump_vert_glsl,
+    sphere_bump_frag_glsl,
   ]
 }
 
@@ -96,6 +118,7 @@ endforeach
 
 _samples_dep = [
   jpeg_dep,
+  tiff_dep,
 ]
 
 foreach name, sources : _samples

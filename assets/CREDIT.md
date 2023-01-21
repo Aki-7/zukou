@@ -1,1 +1,3 @@
 - `moon.jpg` : NASA's Scientific Visualization Studio
+- `ldem_4.tif` : NASA's Scientific Visualization Studio
+- `lroc_color_poles_2k.tif` : NASA's Scientific Visualization Studio

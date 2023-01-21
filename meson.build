@@ -42,6 +42,7 @@ wayland_client_dep = dependency('wayland-client', version: wayland_req)
 wayland_scanner_dep = dependency('wayland-scanner')
 zwin_protocols_dep = dependency('zwin-protocols', version: zwin_protocols_req)
 jpeg_dep = dependency('libjpeg')
+tiff_dep = dependency('libtiff-4')
 
 public_inc = include_directories('include')
 
